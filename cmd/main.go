@@ -7,10 +7,25 @@ import (
 )
 
 func main() {
-	task1 := tasks.NewTask(1, "Terminar curso de go")
-	task2 := tasks.NewTask(2, "Hacer una api rest")
+	store := tasks.NewStore()
 
-	fmt.Printf("Tarea %d: %s (Completada: %v)\n", task1.ID, task1.Title, task1.Done)
-	fmt.Printf("Tarea %d: %s (Completada: %v)\n", task2.ID, task2.Title, task2.Done)
+	store.AddItem("La luna en la gran ciudad")
+	store.AddItem("Y la adrenalina corre")
+	store.AddItem("Sera que estoy alegre y no tengo pretenciones")
+	store.AddItem("Y vos me das lo que hace faltaaa")
+
+	taskList := store.List()
+
+	fmt.Println("=== MIS TAREAS ===")
+
+	for _, value := range taskList {
+		status := "[ ]"
+
+		if value.Done {
+			status = "[X]"
+		}
+
+		fmt.Printf("%s %d. %s \n", status, value.ID, value.Title)
+	}
 
 }
