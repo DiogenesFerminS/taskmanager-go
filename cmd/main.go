@@ -20,10 +20,13 @@ func main() {
 
 	tasks.PrintListOfTask(taskList)
 
-	fmt.Println("\n === Before complete === \n")
+	fmt.Println("\n === Before Edit === \n")
 
 	store.Complete(1)
 	store.Complete(3)
+	store.Delete(2)
+
+	taskList = store.List()
 
 	tasks.PrintListOfTask(taskList)
 }

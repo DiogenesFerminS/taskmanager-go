@@ -28,3 +28,14 @@ func (store *Store) Complete(id int) bool {
 	}
 	return true
 }
+
+func (store *Store) Delete(id int) bool {
+	for i, task := range store.items {
+		if task.ID == id {
+			store.items = append(store.items[:i], store.items[i+1:]...)
+			return true
+		}
+	}
+
+	return true
+}
