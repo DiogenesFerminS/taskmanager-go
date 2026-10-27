@@ -16,16 +16,14 @@ func main() {
 
 	taskList := store.List()
 
-	fmt.Println("=== MIS TAREAS ===")
+	fmt.Println("\n === MIS TAREAS === \n")
 
-	for _, value := range taskList {
-		status := "[ ]"
+	tasks.PrintListOfTask(taskList)
 
-		if value.Done {
-			status = "[X]"
-		}
+	fmt.Println("\n === Before complete === \n")
 
-		fmt.Printf("%s %d. %s \n", status, value.ID, value.Title)
-	}
+	store.Complete(1)
+	store.Complete(3)
 
+	tasks.PrintListOfTask(taskList)
 }

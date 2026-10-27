@@ -19,3 +19,12 @@ func (store *Store) AddItem(title string) Task {
 func (store *Store) List() []Task {
 	return store.items
 }
+
+func (store *Store) Complete(id int) bool {
+	for i, task := range store.items {
+		if task.ID == id {
+			store.items[i].Done = true
+		}
+	}
+	return true
+}
