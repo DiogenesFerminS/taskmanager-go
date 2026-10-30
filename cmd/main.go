@@ -14,19 +14,11 @@ func main() {
 	store.AddItem("Sera que estoy alegre y no tengo pretenciones")
 	store.AddItem("Y vos me das lo que hace faltaaa")
 
-	taskList := store.List()
+	fmt.Println("\n === PROCESANDO === \n")
 
-	fmt.Println("\n === MIS TAREAS === \n")
+	results := store.ProcessAll()
 
-	tasks.PrintListOfTask(taskList)
-
-	fmt.Println("\n === Before Edit === \n")
-
-	store.Complete(1)
-	store.Complete(3)
-	store.Delete(2)
-
-	taskList = store.List()
-
-	tasks.PrintListOfTask(taskList)
+	for _, task := range results {
+		fmt.Println(task.Message)
+	}
 }
